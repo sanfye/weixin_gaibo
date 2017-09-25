@@ -1,0 +1,51 @@
+<view class="overflow-x: hidden; overflow-y: auto; ">
+<view class="login-icon"> 
+ <image class="login-img" src="../../images/reportBg.jpg"></image> 
+ </view> 
+<view>
+    <view class="layout-flex row" style="padding:15px;font-size:18px">
+        <view style="text-align:center;flex:1;border-right:1px solid #E5E5E5;" id="{{messages.saleinfo.title}}" bindtap="showMsg">
+            <view>
+                <image src="{{messages.saleinfo.url}}" class="image"/>
+            </view>
+            <text style="font-size:16px;color:#9c9c9b;text-align:center">{{messages.saleinfo.title}}</text>
+        </view>
+        <view style="flex:1;text-align:center" id="{{messages.mataince.title}}" bindtap="showMsg">
+            <view>
+                <image src="{{messages.mataince.url}}" class="image"/>
+            </view>
+            <text style="font-size:16px;color:#9c9c9b;text-align:center">{{messages.mataince.title}}</text>
+        </view>
+    </view>
+    <view  class="line"></view>
+    <view class="layout-flex row" style="padding:15px;font-size:18px">
+        <view style="text-align:center;flex:1;border-right:1px solid #E5E5E5;" id="{{messages.error.title}}" bindtap="showMsg">
+            <view>
+                <image src="{{messages.error.url}}" class="image"/>
+            </view>
+            <text style="font-size:16px;color:#9c9c9b;text-align:center">{{messages.error.title}}</text>
+        </view>
+        <view style="flex:1;text-align:center" id="{{messages.status.title}}" bindtap="showMsg">
+            <view>
+                <image src="{{messages.status.url}}" class="image"/>
+            </view>
+            <text style="font-size:16px;color:#9c9c9b;text-align:center">{{messages.status.title}}</text>
+        </view>
+    </view>
+    <view  class="line"></view>
+    <view class="layout-flex row" style="padding:15px;font-size:18px">
+        <view style="text-align:center;flex:1;border-right:1px solid #E5E5E5;" id="{{messages.controller.title}}" bindtap="showMsg">
+            <view>
+                <image src="{{messages.controller.url}}" class="image"/>
+            </view>
+            <text style="font-size:16px;color:#9c9c9b;text-align:center">{{messages.controller.title}}</text>
+        </view>
+        <view style="flex:1;text-align:center" id="{{messages.aboutus2.title}}" bindtap="showMsg">
+            <view>
+                <image src="{{messages.aboutus2.url}}" class="image"/>
+            </view>
+            <text style="font-size:16px;color:#9c9c9b;text-align:center">{{messages.aboutus2.title}}</text>
+        </view>
+    </view>
+</view>
+</view>

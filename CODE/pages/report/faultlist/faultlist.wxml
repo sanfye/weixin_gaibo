@@ -1,0 +1,23 @@
+<view class="overflow-x: hidden; overflow-y: auto; ">
+<view class="message_list">
+     <block wx:for="{{records}}">
+          <view class="item">
+             <view class="item-left">
+                  <text class="image">{{item.id}}</text>
+             </view>
+             <view class="item-middle">
+                  <view>
+                       <text class="title">{{item.equipId}}</text>
+                  </view>
+                  <view>
+                      <text class="time">{{item.address}}</text>
+                  </view>
+            </view>
+            <view class="item_right">
+                <view><text class="pay_type">{{item.isOnline}}</text></view>
+            </view>
+         </view>
+         <view  class="line"></view>
+    </block>
+  </view>
+</view>
