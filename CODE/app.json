@@ -15,7 +15,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/dateSelect/dateSelect",
-    "pages/study/directory"
+    "pages/study/directory",
+    "pages/orders/orderInfo"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,8 +24,8 @@
     "navigationBarTitleText": "Gable Cafe",
     "navigationBarTextStyle": "black",
     "backgroundColor": "#fbf9fe",
-    "enablePullDownRefresh":true
-    },
+    "enablePullDownRefresh": true
+  },
   "tabBar": {
     "color": "#9B9DB1",
     "selectedColor": "#3cc51f",
@@ -54,7 +55,7 @@
   "networkTimeout": {
     "request": 10000,
     "downloadFile": 10000,
-    "connectSocket":10000
+    "connectSocket": 10000
   },
-  "debug":true
+  "debug": true
 }

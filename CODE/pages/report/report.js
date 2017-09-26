@@ -29,6 +29,10 @@ Page({
       aboutus2:{
         title:"关于我们",
         url:"/images/icon/aboutus2.png"
+      },
+      orderInfo: {
+        title: "订单详情",
+        url: "/images/icon/sale.png"
       }
     }
   },
@@ -55,7 +59,11 @@ Page({
     } else if (title == "关于我们") {
         wx.navigateTo({
           url: "aboutus/aboutus"
-        })
+      })
+    } else if (title == "订单详情") {
+        wx.navigateTo({
+          url: "../orders/orderInfo"
+    })
     }
   },
   bindfocus:function(){
