@@ -3,21 +3,11 @@ var util = require('../../utils/util.js')
 var api = require('../../utils/api.js')
 var Moment = require("../../utils/Moment.js");
 Page({
-
+  systemInfo: {},
   /**
    * 页面的初始数据
    */
   data: {
-    labelStart: '开始时间',
-    labelEnd: '结束时间',
-    labelCanlendar: '--请选择--',
-    labelCups: '总杯数',
-    labelAccount: '总收益 (元)',
-    totalCups: 0,
-    totalAccount: 0,
-    canlendarUrl: '../../images/calendar-icon.png',
-    startDate: Moment(new Date()).sub(1, 'day').format('YYYY-MM-DD'),
-    endDate: Moment(new Date()).format('YYYY-MM-DD'),
     // text:"这是一个页面"
     records: [
       {
@@ -25,9 +15,22 @@ Page({
         productName: "加载中,请稍等...",
         price: "",
         orderTime: "",
-        payType: ""
+        payType: "",
+        machineNo: ""
       }
-    ]
+    ],
+    labelStart: '开始时间',
+    labelEnd: '结束时间',
+    labelCanlendar: '--请选择--',
+    labelCups: '总杯数',
+    labelAccount: '总收益 (元)',
+    totalCups: 0,
+    totalAccount: 0,
+    machineNo:'',
+    canlendarUrl: '../../images/calendar-icon.png',
+    startDate: Moment(new Date()).format('YYYY-MM-DD'),
+    endDate: Moment(new Date()).format('YYYY-MM-DD')
+   
   },
 
   /**
@@ -36,7 +39,8 @@ Page({
   onLoad: function (options) {
      // 页面初始化 options为页面跳转所带来的参数
     console.log("onLoad======");
-    console.log(options);
+    // console.log(options);
+   
   },
 
   /**
@@ -44,62 +48,69 @@ Page({
    */
   onShow: function () {
     console.log("onShow-begin======");
-    var month = Moment(new Date()).format('YYYY-MM');
-    var now = Moment(new Date()).format('YYYY-MM-DD');
+    // var month = Moment(new Date()).format('YYYY-MM');
+    // var now = Moment(new Date()).format('YYYY-MM-DD');
+    // var data = '{startTime:20170323000000 , endTime:20170821230000}' ;
+    var value = wx.getStorageSync('ROOM_SOURCE_DATE');
+    var dateStart = value.checkInDate;
+    var dateEnd = value.checkOutDate;
+    console.log("dateStart:" + dateStart);
      // 页面显示
-    api.get('http://localhost:8180/queryOrderInfo/history/201703' )
+    api.get('http://localhost:8180/queryOrderInfo/orderInfo?startTime=20170323000000&endTime=20170821230000')
     .then(res =>{
       console.log(res);
       if (res == null || res.data ==null ){
         console.error('网络请求失败');
         return;  
       }else if(res.data.status == "success"){
-        console.log("res.data.record======" + res.data.record);
-        var tempRecords = res.data.record ;
-        var recordsInfo = [];
+        console.log("res.data.orderInfoVos======" + res.data.orderInfoVos);
+        var tempRecords = res.data.orderInfoVos ;
+        var jsonArray = [];
         var totalPrices = 0 ;
-        console.log("res.data.record======" + tempRecords.length);
-        for(var i = 0; i<=tempRecords.length ; i++ ){
+        console.log("tempRecords======" + tempRecords.length);
+        for (var i = 0; i <= tempRecords.length ; i++ ){
          
           //取出记录内容
           var record = tempRecords[i] ;
-          console.log("tempRecords======" + record[0] + '-' + record[1] + '-' + record[2]);
+          console.log("tempRecords======" + record.machineNo + '-' + record.orderNo + '-' + record.productName);
           var json = new Object ;
+          json.id = (i + 1) ;
           //机器编号
-          json.machineNo = record[0] ;  
+          json.machineNo = record.machineNo ;  
           //订单号
-          json.orderNo = record[1] ;
+          json.orderNo = record.orderNo ;
           //产品编码(名称)
-          json.productName = record[2];
+          json.productName = record.productName;
           //产品价格
-          totalPrices = totalPrices + parseInt(record[3]);
-          json.price = "￥"+record[3];
+          totalPrices = totalPrices + parseInt(record.price);
+          json.price = "￥" + record.price;
           //支付类型
-          json.payType = record[4] ;
+          json.payType = record.payWay ;
           //订单完成时间
-          var date = record[5] ;
-          var orderTime ;
-          console.info("date:"+date)
-          var tempDate = Moment(new date(date)).format('YYYY-MM-DD');
-          if(tempDate == now){
-            orderTime = "今天 " + date.getHours() + ":" + date.getMinutes() ;
-          }else{
-            orderTime = Moment(new date(date)).format('MM-DD HH:mm');
-          }
-          josn.orderTime = orderTime ;
-          recordsInfo.push(json);
+          var date = record.orderTime ;
+          // var orderTime ;
+          // console.info("date:"+date)
+          // var tempDate = Moment(new date(date)).format('YYYY-MM-DD');
+          // if(tempDate == now){
+          //   orderTime = "今天 " + date.getHours() + ":" + date.getMinutes() ;
+          // }else{
+          //   orderTime = Moment(new date(date)).format('MM-DD HH:mm');
+          // }
+          josn.orderTime = date ;
+          jsonArray.push(json);
           console.log("json======" + json);
         }
       }
       this.setData({
        // startDate: dateStart,
        // endDate: dateEnd,
-        records: recordsInfo,
+        records: jsonArray,
         totalCups: recordsInfo.length + "杯",
         totalAccount: totalPrices 
       });
       
     })
+  
     console.log("onShow-end======");
   },
 
@@ -128,21 +139,21 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-    console.log("onPullDownRefresh======");
-  },
+  // onPullDownRefresh: function () {
+  //   console.log("onPullDownRefresh======");
+  // },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-    console.log("onReachBottom======");
-  },
+  // onReachBottom: function () {
+  //   console.log("onReachBottom======");
+  // },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-    console.log("onShareAppMessage======");
-  }
+  // onShareAppMessage: function () {
+  //   console.log("onShareAppMessage======");
+  // }
 })

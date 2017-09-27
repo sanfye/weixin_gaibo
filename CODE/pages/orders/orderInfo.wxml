@@ -35,7 +35,7 @@
     </view>
 </view>
 <view class="message_list">
-     <block wx:for="{{records}}">
+     <block wx:for="{{records}}" wx:key="recordsId">
           <view class="item">
              <view class="item-middle">
                   <view>

@@ -12,7 +12,7 @@ Page({
     totalCups:0,
     totalAccount:0,
     canlendarUrl:'../../../images/calendar-icon.png',
-    startDate: Moment(new Date()).format('YYYY-MM-DD').sub(1,'day'),
+    startDate: Moment(new Date()).format('YYYY-MM-DD'),
     endDate:Moment(new Date()).format('YYYY-MM-DD'),
     // text:"这是一个页面"
     records:[
