@@ -16,7 +16,7 @@
     "pages/logs/logs",
     "pages/dateSelect/dateSelect",
     "pages/study/directory",
-    "pages/orders/orderInfo"
+    "pages/report/materials/material"
   ],
   "window": {
     "backgroundTextStyle": "light",

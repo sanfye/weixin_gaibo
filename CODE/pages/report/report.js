@@ -10,6 +10,10 @@ Page({
         title:"销售列表",
         url:"/images/icon/sale.png"
       },
+      material: {
+        title: "物料信息",
+        url: "/images/icon/cups.png"
+      },
       mataince:{
         title:"维护日志",
         url:"/images/icon/mataince.png"
@@ -29,10 +33,6 @@ Page({
       aboutus2:{
         title:"关于我们",
         url:"/images/icon/aboutus2.png"
-      },
-      orderInfo: {
-        title: "订单详情",
-        url: "/images/icon/sale.png"
       }
     }
   },
@@ -42,9 +42,9 @@ Page({
         wx.navigateTo({
           url: "salereport/salereport"
         })
-    } else if (title == "维护日志") {
+    } else if (title == "物料信息") {
         wx.navigateTo({
-          url: "../logs/logs"
+          url: "materials/material"
         })
     } else if (title == "故障列表") {
         wx.navigateTo({
@@ -60,10 +60,10 @@ Page({
         wx.navigateTo({
           url: "aboutus/aboutus"
       })
-    } else if (title == "订单详情") {
-        wx.navigateTo({
-          url: "../orders/orderInfo"
-    })
+    } else if (title == "维护日志") {
+      wx.navigateTo({
+        url: "../logs/logs"
+      })
     }
   },
   bindfocus:function(){

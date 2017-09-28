@@ -12,8 +12,8 @@
 }
 .message_list {
   background-color: #ffffff;
-  padding-left: 8rpx;
-  padding-right: 8rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
 }
 
 .item {
@@ -76,6 +76,7 @@
   display: flex;
   flex-direction: column;
   align-items: right;
+  padding-right: 20rpx ;
 }
 
 .pay_type {
@@ -100,8 +101,6 @@
   background-color: #e0e1e2;
 }
 
-.text {
-}
 .layout-flex{
     display:flex;
 }

@@ -10,12 +10,13 @@
             </view>
             <text style="font-size:16px;color:#9c9c9b;text-align:center">{{messages.saleinfo.title}}</text>
         </view>
-        <view style="flex:1;text-align:center" id="{{messages.mataince.title}}" bindtap="showMsg">
+        <view style="flex:1;text-align:center" id="{{messages.material.title}}" bindtap="showMsg">
             <view>
-                <image src="{{messages.mataince.url}}" class="image"/>
+                <image src="{{messages.material.url}}" class="image"/>
             </view>
-            <text style="font-size:16px;color:#9c9c9b;text-align:center">{{messages.mataince.title}}</text>
+            <text style="font-size:16px;color:#9c9c9b;text-align:center">{{messages.material.title}}</text>
         </view>
+        
     </view>
     <view  class="line"></view>
     <view class="layout-flex row" style="padding:15px;font-size:18px">
@@ -33,6 +34,7 @@
         </view>
     </view>
     <view  class="line"></view>
+    
     <view class="layout-flex row" style="padding:15px;font-size:18px">
         <view style="text-align:center;flex:1;border-right:1px solid #E5E5E5;" id="{{messages.controller.title}}" bindtap="showMsg">
             <view>
@@ -40,25 +42,26 @@
             </view>
             <text style="font-size:16px;color:#9c9c9b;text-align:center">{{messages.controller.title}}</text>
         </view>
-        <view style="flex:1;text-align:center" id="{{messages.aboutus2.title}}" bindtap="showMsg">
+        <view style="flex:1;text-align:center" id="{{messages.mataince.title}}" bindtap="showMsg">
             <view>
-                <image src="{{messages.aboutus2.url}}" class="image"/>
+                <image src="{{messages.mataince.url}}" class="image"/>
             </view>
-            <text style="font-size:16px;color:#9c9c9b;text-align:center">{{messages.aboutus2.title}}</text>
+            <text style="font-size:16px;color:#9c9c9b;text-align:center">{{messages.mataince.title}}</text>
         </view>
         
     </view>
      <view  class="line"></view>
-      <view class="layout-flex row" style="padding:15px;font-size:18px">
-
-        <view style="text-align:center;flex:1;border-right:1px solid #E5E5E5;" id="{{messages.orderInfo.title}}" bindtap="showMsg">
-                <view>
-                    <image src="{{messages.orderInfo.url}}" class="image"/>
-                </view>
-                <text style="font-size:16px;color:#9c9c9b;text-align:center">{{messages.orderInfo.title}}   </text>
+     <view class="layout-flex row" style="padding:15px;font-size:18px">
+ 
+<view style="flex:1;text-align:center;border-right:1px solid #E5E5E5;" id="{{messages.aboutus2.title}}" bindtap="showMsg">
+            <view>
+                <image src="{{messages.aboutus2.url}}" class="image"/>
             </view>
+            <text style="font-size:16px;color:#9c9c9b;text-align:center">{{messages.aboutus2.title}}</text>
+           </view>
              <view style="flex:1;text-align:center" id="{{messages.aboutus2.title}}" bindtap="showMsg">
              </view>
-        </view>
+     
+      </view>
 </view>
 </view>

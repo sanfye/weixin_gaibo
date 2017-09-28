@@ -1,6 +1,6 @@
 <view class="overflow-x: hidden; overflow-y: auto; ">
 <view class="message_list">
-     <block wx:for="{{records}}">
+     <block wx:for="{{records}}" wx:for-item="item" >
           <view class="item">
              <view class="item-left">
                   <text class="image">{{item.id}}</text>
@@ -14,7 +14,13 @@
                   </view>
             </view>
             <view class="item_right">
-                <view><text class="pay_type">{{item.isOnline}}</text></view>
+               <view wx:if="{{item.isOnline ==1 }}">
+                 <image src="../../../images/icon/cups.png" class="imageCandenler"/>
+               </view>
+                <view wx:else>
+                 <image src="../../../images/icon/cups.png" class="imageCandenler"/>
+               </view>
+                <view><text class="pay_type">{{item.status}}</text></view>
             </view>
          </view>
          <view  class="line"></view>

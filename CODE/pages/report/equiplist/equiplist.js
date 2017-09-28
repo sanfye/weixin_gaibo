@@ -9,6 +9,7 @@ Page({
         id:"",
         equipId:"加载中,请稍等...",
         isOnline:"",
+        status:"",
         address:""
       }
     ]
@@ -27,14 +28,12 @@ Page({
   },
   onShow:function(){
     // 页面显示
-    //api.get('http://103.231.67.143:8079/DEVICE?QID=300001&QLEVEL=INFO&USERNAME=user&MAC=f9add388b2fc6ca7628deb27d3504245')
     api.get('http://localhost:8180/queryDeviceInfo/device/INFO')
         .then(res => {
         console.log(res);
         if(res.data.status == "success") {
           var tempRecords = res.data.record;
           var jsonArray = [];
-          var totalPrices = 0;
           for (var i = 0; i < tempRecords.length; i++) {
             var record = tempRecords[i];
             var json = new Object;
@@ -43,17 +42,17 @@ Page({
             json.address = record[1];
             var isOnline = record[3];
             if (isOnline == "1") {
-              isOnline = "正常";
+              json.status = "正常";
             } else {
-              isOnline = "断开服务";
+              json.status = "断开服务";
             }
             json.isOnline = isOnline
             jsonArray.push(json);
-          }
+          }//for end
           this.setData({
              records:jsonArray
           })
-        }
+        }//if end
       })
     console.log("onShow======");
   },
