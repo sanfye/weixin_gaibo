@@ -48,7 +48,7 @@
 .item-middle {
   flex: 1;
   margin-left: 20rpx;
-  padding-top: 13rpx;
+  padding-top: 40rpx;
   overflow: hidden;
 }
 
@@ -72,11 +72,21 @@
   text-overflow: ellipsis; /**文字隐藏后添加省略号*/
 }
 
+.machineNo {
+  font-family: "微软雅黑";
+  color: #9c9c9b;
+  font-size: 26rpx;
+  overflow: hidden; /**自动隐藏文字*/
+  text-overflow: ellipsis; /**文字隐藏后添加省略号*/
+  margin-left: 10rpx;
+}
+
 .item_right {
   padding-top: 40rpx;
   overflow: hidden;
-  width: 100rpx;
+  width: 150rpx;
   align-items: right;
+  
 }
 
 .pay_type {

@@ -1,8 +1,8 @@
 var api = require('../../utils/api.js')
 Page({ 
  data: { 
- phone: 'admin', 
- password:'admin123'
+ phone: '', 
+ password:''
  }, 
   
 // 获取输入账号 

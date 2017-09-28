@@ -40,6 +40,12 @@ Page({
      // 页面初始化 options为页面跳转所带来的参数
     console.log("onLoad======");
     // console.log(options);
+    try {
+      wx.removeStorageSync('ROOM_SOURCE_DATE')
+    } catch (e) {
+      // Do something when catch error
+      console.error("onLoad错误日志："+e);
+    }
    
   },
 
@@ -49,65 +55,81 @@ Page({
   onShow: function () {
     console.log("onShow-begin======");
     // var month = Moment(new Date()).format('YYYY-MM');
-    // var now = Moment(new Date()).format('YYYY-MM-DD');
+    var now = Moment(new Date()).format('YYYY-MM-DD');
     // var data = '{startTime:20170323000000 , endTime:20170821230000}' ;
     var value = wx.getStorageSync('ROOM_SOURCE_DATE');
-    var dateStart = value.checkInDate;
-    var dateEnd = value.checkOutDate;
-    console.log("dateStart:" + dateStart);
+    
+    var startTime = Moment(new Date()).format('YYYYMMDD');
+    var endTime = Moment(new Date()).format('YYYYMMDD')
+
+    var startDate = Moment(new Date()).format('yyyy-MM-DD');
+    var endDate = Moment(new Date()).format('yyyy-MM-DD');
+
+    if (value){
+      console.log(value);
+      startTime = Moment(value.checkInDate).format('YYYYMMDD');
+      endTime = Moment(value.checkOutDate).format('YYYYMMDD')
+      startDate = Moment(value.checkInDate).format('yyyy-MM-DD');
+      endDate = Moment(value.checkOutDate).format('yyyy-MM-DD');
+    }
+    startTime = startTime + "000000";
+    endTime = endTime + "235959";
+    console.log("startTime:" + startTime + " ; endTime:" + endTime);
+    var date = 'startTime=' + startTime + '&endTime=' + endTime
+    
      // 页面显示
-    api.get('http://localhost:8180/queryOrderInfo/orderInfo?startTime=20170323000000&endTime=20170821230000')
+    api.get('http://localhost:8180/queryOrderInfo/orderInfo?'+date)
     .then(res =>{
       console.log(res);
       if (res == null || res.data ==null ){
         console.error('网络请求失败');
         return;  
-      }else if(res.data.status == "success"){
+      } else if (res.data.isError == "false"){
         console.log("res.data.orderInfoVos======" + res.data.orderInfoVos);
         var tempRecords = res.data.orderInfoVos ;
         var jsonArray = [];
         var totalPrices = 0 ;
         console.log("tempRecords======" + tempRecords.length);
-        for (var i = 0; i <= tempRecords.length ; i++ ){
+        for (var i = 0; i < tempRecords.length ; i++ ){
          
           //取出记录内容
           var record = tempRecords[i] ;
-          console.log("tempRecords======" + record.machineNo + '-' + record.orderNo + '-' + record.productName);
+         // console.log("tempRecords======" + record.machineNo + '-' + record.orderNo + '-' + record.productName);
           var json = new Object ;
           json.id = (i + 1) ;
           //机器编号
           json.machineNo = record.machineNo ;  
-          //订单号
-          json.orderNo = record.orderNo ;
+        
           //产品编码(名称)
           json.productName = record.productName;
           //产品价格
-          totalPrices = totalPrices + parseInt(record.price);
+          totalPrices = totalPrices + parseFloat(record.price);
           json.price = "￥" + record.price;
           //支付类型
           json.payType = record.payWay ;
           //订单完成时间
           var date = record.orderTime ;
-          // var orderTime ;
-          // console.info("date:"+date)
-          // var tempDate = Moment(new date(date)).format('YYYY-MM-DD');
+          // var tempdate = Moment(date).format('MM-DD HH:mm');
+          var orderTime ;
+          // var tempDate = Moment(date).format('YYYY-MM-DD');
           // if(tempDate == now){
-          //   orderTime = "今天 " + date.getHours() + ":" + date.getMinutes() ;
+          //   orderTime = "今天 " + tempDate.getHours() + ":" + tempDate.getMinutes() ;
           // }else{
-          //   orderTime = Moment(new date(date)).format('MM-DD HH:mm');
+            orderTime = Moment(date).format('MM-DD HH:mm');
           // }
-          josn.orderTime = date ;
+          json.orderTime = orderTime ;
           jsonArray.push(json);
           console.log("json======" + json);
         }
+        this.setData({
+          startDate: startDate,
+          endDate: endDate,
+          records: jsonArray,
+          totalCups: tempRecords.length + "杯",
+          totalAccount: totalPrices.toFixed(1)
+        });
       }
-      this.setData({
-       // startDate: dateStart,
-       // endDate: dateEnd,
-        records: jsonArray,
-        totalCups: recordsInfo.length + "杯",
-        totalAccount: totalPrices 
-      });
+     
       
     })
   
@@ -134,6 +156,8 @@ Page({
    */
   onUnload: function () {
     console.log("onUnload======");
+    var startDate = Moment(new Date()).format('yyyy-MM-DD');
+    var endDate = Moment(new Date()).format('yyyy-MM-DD');
   },
 
   /**
@@ -156,4 +180,10 @@ Page({
   // onShareAppMessage: function () {
   //   console.log("onShareAppMessage======");
   // }
+
+  selectDate: function (event) {
+    wx.navigateTo({
+      url: "../dateSelect/dateSelect"
+    })
+  }
 })
