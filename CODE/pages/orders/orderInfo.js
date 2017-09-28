@@ -108,15 +108,10 @@ Page({
           //支付类型
           json.payType = record.payWay ;
           //订单完成时间
-          var date = record.orderTime ;
-          // var tempdate = Moment(date).format('MM-DD HH:mm');
+          // var date = record.orderTime ;
           var orderTime ;
-          // var tempDate = Moment(date).format('YYYY-MM-DD');
-          // if(tempDate == now){
-          //   orderTime = "今天 " + tempDate.getHours() + ":" + tempDate.getMinutes() ;
-          // }else{
-            orderTime = Moment(date).format('MM-DD HH:mm');
-          // }
+          orderTime = Moment(record.orderTime).format('MM-DD HH:mm');
+
           json.orderTime = orderTime ;
           jsonArray.push(json);
           console.log("json======" + json);
