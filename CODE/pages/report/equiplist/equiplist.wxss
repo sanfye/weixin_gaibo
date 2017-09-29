@@ -45,7 +45,7 @@
 
 .item-middle {
   flex: 1;
-  margin-left: 10rpx;
+  margin-left: 20rpx;
   padding-top: 13rpx;
   overflow: hidden;
 }
@@ -53,10 +53,9 @@
 .title {
   color: #000000;
   font-family: "微软雅黑";
-  font-weight: bold;
   line-height: 20rpx;
   padding: 10rpx 16rpx, 0, 16rpx;
-  font-size: 26rpx;
+  font-size: 30rpx;
   margin-top: 10rpx;
   overflow: hidden; /*自动隐藏文字*/
   text-overflow: ellipsis; /*文字隐藏后添加省略号*/

@@ -12,28 +12,28 @@ Page({
       },
       material: {
         title: "物料信息",
-        url: "/images/icon/cups.png"
+        url: "/images/icon/controller.png"
       },
-      mataince:{
+     /* mataince:{
         title:"维护日志",
         url:"/images/icon/mataince.png"
-      },
+      },*/
       error:{
         title:"故障列表",
         url:"/images/icon/error.png"
         },
-      status:{
+    status:{
         title:"机器状态",
         url:"/images/icon/status.png"
       },
-      controller:{
+      /*  controller:{
         title:"机器控制",
         url:"/images/icon/controller.png"
       },
       aboutus2:{
         title:"关于我们",
         url:"/images/icon/aboutus2.png"
-      }
+      }*/
     }
   },
   showMsg: function (event) {
@@ -50,7 +50,7 @@ Page({
         wx.navigateTo({
           url: "faultlist/faultlist"
         })
-    } else if (title == "机器状态") {
+    }/* else if (title == "机器状态") {
         wx.navigateTo({
           url: "equiplist/equiplist"
         })
@@ -64,7 +64,7 @@ Page({
       wx.navigateTo({
         url: "../logs/logs"
       })
-    }
+    }*/
   },
   bindfocus:function(){
     this.setData({
