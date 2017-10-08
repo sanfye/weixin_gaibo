@@ -50,11 +50,11 @@ Page({
         wx.navigateTo({
           url: "faultlist/faultlist"
         })
-    }/* else if (title == "机器状态") {
+    } else if (title == "机器状态") {
         wx.navigateTo({
           url: "equiplist/equiplist"
         })
-    } else if (title == "机器控制") {
+    } /*else if (title == "机器控制") {
         
     } else if (title == "关于我们") {
         wx.navigateTo({

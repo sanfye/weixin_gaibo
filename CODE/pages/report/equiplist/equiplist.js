@@ -27,8 +27,13 @@ Page({
     console.log("onReady======");
   },
   onShow:function(){
+    var userName = wx.getStorageSync("userName");
+    var password = wx.getStorageSync("userPassword");
+    
+    var param = '?userName=' + userName + '&password=' + password;
+
     // 页面显示
-    api.get('http://localhost:8180/queryDeviceInfo/device/INFO')
+    api.get('http://localhost:8180/queryDeviceInfo/device/INFO'+param)
         .then(res => {
         console.log(res);
         if(res.data.status == "success") {
@@ -44,7 +49,7 @@ Page({
             if (isOnline == "1") {
               json.status = "正常";
             } else {
-              json.status = "断开服务";
+              json.status = "异常";
             }
             json.isOnline = isOnline
             jsonArray.push(json);

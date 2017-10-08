@@ -30,6 +30,8 @@ Page({
     startDate: Moment(new Date()).format('YYYY-MM-DD'),
     endDate: Moment(new Date()).format('YYYY-MM-DD')
 
+    
+
   },
 
   /**
@@ -61,8 +63,8 @@ Page({
     var startTime = Moment(new Date()).format('YYYYMMDD');
     var endTime = Moment(new Date()).format('YYYYMMDD')
 
-    var startDate = Moment(new Date()).format('yyyy-MM-DD');
-    var endDate = Moment(new Date()).format('yyyy-MM-DD');
+    // var startDate = Moment(new Date()).format('yyyy-MM-DD');
+    // var endDate = Moment(new Date()).format('yyyy-MM-DD');
 
     if (value) {
       console.log(value);
@@ -74,10 +76,13 @@ Page({
     startTime = startTime + "000000";
     endTime = endTime + "235959";
     console.log("startTime:" + startTime + " ; endTime:" + endTime);
-    var date = 'starttime=' + startTime + '&endtime=' + endTime
-
+    var userName = wx.getStorageSync("userName");
+    var password = wx.getStorageSync("userPassword");
+    console.info('salereport>>userNamae:' + userName + ";password:" + password);
+    var param = 'starttime=' + startTime + '&endtime=' + endTime + '&userName=' + userName + '&password=' + password ;
+    
     // 页面显示
-    api.get('https://www.gablecafe.cn/gaibo-query-server/queryorderinfo/orderinfo?' + date)
+    api.get('https://www.gablecafe.cn/gaibo-query-server/queryorderinfo/orderinfo?' + param)
       .then(res => {
         console.log(res);
         if (res == null || res.data == null) {

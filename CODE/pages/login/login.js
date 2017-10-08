@@ -27,7 +27,10 @@ Page({
   icon: 'loading', 
   duration: 500 
   }) 
-}else { 
+}else {
+  //存储用户密码
+   wx.setStorageSync("userName", this.data.phone);
+   wx.setStorageSync("userPassword", this.data.password);
  // 这里修改成跳转的页面 
   // var params = e.detail.value;
   // console.log(params);
@@ -48,5 +51,5 @@ Page({
   
 
  } 
- } 
+ }
 })
