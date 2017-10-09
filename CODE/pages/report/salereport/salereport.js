@@ -29,9 +29,6 @@ Page({
     canlendarUrl: '../../../images/calendar-icon.png',
     startDate: Moment(new Date()).format('YYYY-MM-DD'),
     endDate: Moment(new Date()).format('YYYY-MM-DD')
-
-    
-
   },
 
   /**
@@ -63,8 +60,8 @@ Page({
     var startTime = Moment(new Date()).format('YYYYMMDD');
     var endTime = Moment(new Date()).format('YYYYMMDD')
 
-    // var startDate = Moment(new Date()).format('yyyy-MM-DD');
-    // var endDate = Moment(new Date()).format('yyyy-MM-DD');
+    var startDate = Moment(new Date()).format('yyyy-MM-DD');
+    var endDate = Moment(new Date()).format('yyyy-MM-DD');
 
     if (value) {
       console.log(value);
@@ -79,10 +76,11 @@ Page({
     var userName = wx.getStorageSync("userName");
     var password = wx.getStorageSync("userPassword");
     console.info('salereport>>userNamae:' + userName + ";password:" + password);
-    var param = 'starttime=' + startTime + '&endtime=' + endTime + '&userName=' + userName + '&password=' + password ;
+    var param = 'startTime=' + startTime + '&endTime=' + endTime + '&userName=' + userName + '&password=' + password ;
     
     // 页面显示
-    api.get('https://www.gablecafe.cn/gaibo-query-server/queryorderinfo/orderinfo?' + param)
+    // api.get('https://www.gablecafe.cn/gaibo-query-server/queryorderinfo/orderinfo?' + param)
+    api.get('http://localhost:8180/queryOrderInfo/orderInfo?' + param)
       .then(res => {
         console.log(res);
         if (res == null || res.data == null) {

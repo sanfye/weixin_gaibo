@@ -36,16 +36,19 @@ Page({
     api.get('http://localhost:8180/queryDeviceInfo/device/INFO'+param)
         .then(res => {
         console.log(res);
-        if(res.data.status == "success") {
-          var tempRecords = res.data.record;
+       if (res == null || res.data == null) {
+          console.error('网络请求异常');
+          return;
+        } else if (res.data.isError == "false") {
+          var tempRecords = res.data.deviceInfoDos;
           var jsonArray = [];
           for (var i = 0; i < tempRecords.length; i++) {
             var record = tempRecords[i];
             var json = new Object;
             json.id = "" + (i + 1);
-            json.equipId = record[0];
-            json.address = record[1];
-            var isOnline = record[3];
+            json.equipId = record.machineNo;
+            json.address = record.siteSimple;
+            var isOnline = record.onOffLine;
             if (isOnline == "1") {
               json.status = "正常";
             } else {
