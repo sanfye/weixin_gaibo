@@ -1,0 +1,89 @@
+.section {
+    width: 100%;
+    padding: 0 0px;
+}
+.discover-image {
+    display: flex;
+    margin-bottom: 10px;
+}
+.discover-image-two {
+    display: flex;
+    justify-content: space-between;
+}
+.item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 8rpx;
+  margin-left: 8rpx;
+  height: 122rpx;
+  margin-right: 8rpx;
+  margin-top: 8rpx;
+  background-color: #ffffff;
+  /**  border: 1rpx solid #eaeaea;
+  border-bottom: 1rpx solid #d0d0d0;
+  border-radius: 5rpx;*/
+}
+
+.item-left {
+  margin-top: 15rpx;
+  display: table-cell;
+}
+
+.image {
+  width: 90rpx;
+  height: 90rpx;
+}
+.image2 {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 44rpx;
+  background-color: #000000;
+}
+.item-middle {
+  flex: 1;
+  margin-left: 55rpx;
+  padding-top: 55rpx;
+  overflow: hidden; /**自动隐藏文字*/
+}
+
+.title {
+  color: #000000;
+  font-family: "微软雅黑";
+  font-weight: bold;
+  line-height: 20rpx;
+  padding: 32rpx 16rpx, 0, 16rpx;
+  font-size: 30rpx;
+  margin-top: 60rpx;
+  overflow: hidden; /*自动隐藏文字*/
+  text-overflow: ellipsis; /*文字隐藏后添加省略号*/
+}
+.item_right {
+  padding-top: 15rpx;
+  display: table-cell;
+}
+.message_list {
+  background-color: #ffffff;
+  padding-left: 8rpx;
+  padding-right: 8rpx;
+}
+/*lOGO图片*/
+.login-icon{ 
+ flex: none; 
+} 
+.login-img{ 
+ width: 750rpx; 
+ height: 400rpx;
+} 
+.line { 
+ width: 100%; 
+ height: 1px; 
+ background-color: #F0F0F0; 
+ margin-top: 1px; 
+} 
+.layout-flex{
+    display:flex;
+}
+.layout-flex .row{
+    flex-direction: row;
+}

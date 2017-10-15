@@ -1,0 +1,61 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/report/report",
+    "pages/report/salereport/salereport",
+    "pages/report/equiplist/equiplist",
+    "pages/report/faultlist/faultlist",
+    "pages/message/message",
+    "pages/contact/contact",
+    "pages/report/aboutus/aboutus",
+    "pages/setting/setting",
+    "pages/setting/music/music",
+    "pages/message/chat/chat",
+    "pages/message/search/search",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/dateSelect/dateSelect",
+    "pages/study/directory",
+    "pages/report/materials/material"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffdb5c",
+    "navigationBarTitleText": "Gable Cafe",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#fbf9fe",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#9B9DB1",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/login/login",
+        "iconPath": "images/icon/home.png",
+        "selectedIconPath": "images/bar_home_black_selected.png",
+        "text": "Home"
+      },
+      {
+        "pagePath": "pages/contact/contact",
+        "iconPath": "images/icon/aboutus.png",
+        "selectedIconPath": "images/tab_contact_selected.png",
+        "text": "关于我们"
+      },
+      {
+        "pagePath": "pages/setting/setting",
+        "iconPath": "images/icon/setting.png",
+        "selectedIconPath": "images/tab_dynamic_selected.png",
+        "text": "设置"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000,
+    "connectSocket": 10000
+  },
+  "debug": true
+}

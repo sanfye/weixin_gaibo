@@ -1,0 +1,5 @@
+<!--pages/report/materials/material.wxml-->
+
+<view class="item-left">
+       <text>暂无数据</text>
+</view>

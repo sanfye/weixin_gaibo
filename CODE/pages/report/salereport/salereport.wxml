@@ -1,0 +1,61 @@
+<view class="overflow-x: hidden; overflow-y: auto; ">
+<view style="top:0;background:#ffdb5c;height:150px">
+    <view style="padding:15px;font-size:20px">
+        <view style="text-align:center;margin-right: 20rpx">
+            <text style="color:#000000;font-size:30px;font-weight:bold">{{totalAccount}}</text>
+        </view>
+        <view style="text-align:center;margin-right: 20rpx">
+            <text style="color:#c38018;font-size:16px;font-weight:bold">{{labelAccount}}</text>
+        </view>
+        <view style="display:flex;justify-content: center;" >
+            <view style="text-align:center;margin-left: {{systemInfo.windowWidth/2 - 55}}px">
+              <image src="../../../images/icon/cups.png" class="imageCandenler"/>
+            </view>
+            <view style="text-align:center;margin-left: 5rpx;margin-top: 15rpx">
+                <text style="color:#9c9c9b;font-size:20px;font-weight:bold">{{totalCups}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view style="top:0;background:#fff;height:50px">
+    <view class="layout-flex row" style="padding:15px;font-size:18px">
+        <view style="text-align:center;flex:1;border-right:1px solid #eee;" bindtap="selectDate">
+            <view>
+                <text style="color:#9c9c9b;font-weight:bold">{{startDate}}</text>
+            </view>
+            <text style="font-size:16px;color:#9c9c9b;text-align:center">{{labelStart}}</text>
+        </view>
+        <view style="flex:1;text-align:center" bindtap="selectDate">
+            <view>
+                <text style="color:#9c9c9b;font-weight:bold">{{endDate}}</text>
+            </view>
+            <text style="font-size:16px;color:#9c9c9b;text-align:center">{{labelEnd}}</text>
+        </view>
+    </view>
+</view>
+<!--选择器
+<view class="machineList">机器列表</view>-->
+<picker mode="selector" range="{{array}}" value="{{index}}" bindchange="listenerPickerSelected">
+    <view class="machineList">{{array[index]}}</view>
+</picker>
+
+<view class="message_list">
+     <block wx:for="{{records}}" wx:key="recordsId">
+          <view class="item">
+             <view class="item-middle">
+                  <view>
+                       <text class="title">{{item.productName}}</text>
+                  </view>
+                  <view>
+                      <text class="time">{{item.orderTime}} {{item.payType}}</text>
+                  </view>
+            </view>
+            <view class="item_right">
+                <view><text class="mark">{{item.price}}</text></view>
+                <view><text class="machineNo">{{item.machineNo}}</text></view>
+            </view>
+         </view>
+         <view  class="line"></view>
+    </block>
+  </view>
+</view>
